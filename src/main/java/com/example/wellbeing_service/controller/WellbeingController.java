@@ -4,6 +4,7 @@ import com.example.wellbeing_service.model.WellbeingModel;
 import com.example.wellbeing_service.service.WellbeingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import reactor.core.publisher.Mono;
 
 @RestController
 @RequestMapping("/wellbeing")
