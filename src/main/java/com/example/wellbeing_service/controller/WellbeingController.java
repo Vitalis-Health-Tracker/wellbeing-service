@@ -13,7 +13,8 @@ public class WellbeingController {
     private WellbeingService wellbeingService;
 
     @PostMapping
-    public String saveWellbeing(@RequestBody WellbeingModel wellbeingModel) {
+    public String saveWellbeing(@RequestBody WellbeingModel wellbeingModel, @RequestParam String userId) {
+        wellbeingModel.setUserId(userId);
         return wellbeingService.saveWellbeing(wellbeingModel);
     }
 
@@ -28,7 +29,8 @@ public class WellbeingController {
     }
 
     @GetMapping("/date")
-    public Iterable<WellbeingModel> getWellbeingByDate(@RequestParam String startDate, @RequestParam String endDate) {
-        return wellbeingService.getWellbeingByDate(startDate, endDate);
+    public Iterable<WellbeingModel> getWellbeingByDate(@RequestParam String userId, @RequestParam String startDate, @RequestParam String endDate) {
+        return wellbeingService.getWellbeingByDate(userId,startDate, endDate);
     }
+
 }

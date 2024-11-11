@@ -8,5 +8,5 @@ import java.util.List;
 
 @Repository
 public interface WellbeingRepo extends MongoRepository<WellbeingModel, String> {
-    public List<WellbeingModel> findByWellbeingDateBetween(String startDate, String endDate);
+    public List<WellbeingModel> findByUserIdAndWellbeingDateBetween(String userId, String startDate, String endDate);
 }

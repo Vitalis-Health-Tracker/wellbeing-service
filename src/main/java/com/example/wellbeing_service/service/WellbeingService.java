@@ -27,7 +27,7 @@ public class WellbeingService {
         return "Wellbeing deleted";
     }
 
-    public List<WellbeingModel> getWellbeingByDate(String startDate, String endDate) {
-        return wellbeingRepo.findByWellbeingDateBetween(startDate, endDate);
+    public List<WellbeingModel> getWellbeingByDate(String userId, String startDate, String endDate) {
+        return wellbeingRepo.findByUserIdAndWellbeingDateBetween(userId,startDate, endDate);
     }
 }
