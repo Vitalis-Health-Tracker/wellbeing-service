@@ -7,6 +7,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Data
 @AllArgsConstructor
@@ -16,7 +17,7 @@ public class WellbeingModel {
     @Id
     private String wellbeingId;
     private String userId;
-    private Integer sleepTimer;
+    private Integer sleepTime;
     private String mood;
-    private LocalDate wellbeingDate;
+    private LocalDateTime wellbeingDate;
 }

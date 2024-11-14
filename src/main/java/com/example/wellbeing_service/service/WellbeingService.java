@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -15,6 +16,7 @@ public class WellbeingService {
     private WellbeingRepo wellbeingRepo;
 
     public String saveWellbeing(WellbeingModel wellbeingModel) {
+        wellbeingModel.setWellbeingDate(LocalDateTime.now());
         wellbeingRepo.save(wellbeingModel);
         return "Wellbeing saved";
     }
@@ -28,7 +30,8 @@ public class WellbeingService {
         return "Wellbeing deleted";
     }
 
-    public List<WellbeingModel> getWellbeingByDate(String userId, String startDate, String endDate) {
-        return wellbeingRepo.findByUserIdAndWellbeingDateBetween(userId,startDate, endDate);
+    public List<WellbeingModel> getWellbeingByDate(String userId, LocalDateTime startDate, LocalDateTime endDate) {
+        return wellbeingRepo.findByUserIdAndWellbeingDateBetween(userId,startDate, endDate)
+                .orElseThrow(() -> new RuntimeException("Record not Found!!"));
     }
 }
