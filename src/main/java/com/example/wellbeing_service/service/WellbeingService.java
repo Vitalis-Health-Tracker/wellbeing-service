@@ -27,10 +27,6 @@ public class WellbeingService {
         }
     }
 
-    public WellbeingModel getWellbeing(String wellbeingId) {
-        return wellbeingRepo.findById(wellbeingId).orElse(null);
-    }
-
     public String deleteWellbeing(String wellbeingId) {
         wellbeingRepo.deleteById(wellbeingId);
         return "Wellbeing deleted";
@@ -39,6 +35,11 @@ public class WellbeingService {
     public List<WellbeingModel> getWellbeingByDate(String userId, LocalDateTime startDate, LocalDateTime endDate) {
         return wellbeingRepo.findAllByUserIdAndWellbeingDateBetween(userId,startDate, endDate)
                 .orElseThrow(() -> new RuntimeException("Record not Found!!"));
+    }
+
+    public WellbeingModel getWellbeing(String userId)
+    {
+        return wellbeingRepo.findByUserIdAndWellbeingDateBetween(userId, LocalDateTime.now().toLocalDate().atStartOfDay(), LocalDateTime.now());
     }
 
     public String updateWellbeing(WellbeingModel wellbeingModel) {

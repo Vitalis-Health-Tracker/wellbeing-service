@@ -23,9 +23,9 @@ public class WellbeingController {
         return wellbeingService.saveWellbeing(wellbeingModel);
     }
 
-    @GetMapping("/{id}")
-    public WellbeingModel getWellbeing(@PathVariable String wellbeingId) {
-        return wellbeingService.getWellbeing(wellbeingId);
+    @GetMapping("/{userId}")
+    public WellbeingModel getWellbeing(@PathVariable String userId) {
+        return wellbeingService.getWellbeing(userId);
     }
 
     @DeleteMapping("/{id}")
